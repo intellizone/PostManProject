@@ -1,0 +1,135 @@
+{
+	"info": {
+		"_postman_id": "a0506f7d-a67c-4df1-93a4-3130abce7265",
+		"name": "Monitor",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "35045676",
+		"_collection_link": "https://www.postman.com/suriyaprakashm/workspace/suriya-prakash/collection/35045676-a0506f7d-a67c-4df1-93a4-3130abce7265?action=share&source=collection_link&creator=35045676"
+	},
+	"item": [
+		{
+			"name": "Positive Testcase",
+			"item": [
+				{
+					"name": "Get Users List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code received from server is 200 OK\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time from server < 5 seconds\",function(){\r",
+									"\tpm.expect(pm.response.responseTime).to.be.below(5000);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response body is received from server\", function () {\r",
+									"     pm.response.to.be.withBody;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response body received from server is in JSON format\", function () {\r",
+									"     pm.response.to.be.json;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response body contains fields such as id, name, email, gender, status\", function () {\r",
+									"     pm.expect(pm.response.text()).to.include(\"id\");\r",
+									"     pm.expect(pm.response.text()).to.include(\"name\");\r",
+									"     pm.expect(pm.response.text()).to.include(\"email\");\r",
+									"     pm.expect(pm.response.text()).to.include(\"status\");\r",
+									"     pm.expect(pm.response.text()).to.include(\"gender\");\r",
+									"});\r",
+									"\r",
+									"console.log(pm.response.code);\r",
+									"console.log(pm.response.json());\r",
+									"console.log(pm.response.responseTime);\r",
+									"console.log(pm.response.size());\r",
+									"console.log(pm.response.headers);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{Access-Token}}"
+							}
+						],
+						"url": {
+							"raw": "https://gorest.co.in/public/v2/users?page=11&per_page=50",
+							"protocol": "https",
+							"host": [
+								"gorest",
+								"co",
+								"in"
+							],
+							"path": [
+								"public",
+								"v2",
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "11"
+								},
+								{
+									"key": "per_page",
+									"value": "50"
+								}
+							]
+						},
+						"description": "StartFragment\n\nExpected Result:\n\n- Verify if response code received from server is 200 OK\n    \n- Verify if response time from server < 5 seconds\n    \n- Verify if response body is received from server\n    \n- Verify if response body received from server is in JSON format\n    \n- Verify if response body contains fields such as id, name, email, gender, status\n    \n\nEndFragment"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "6917530"
+		},
+		{
+			"key": "Access-Token",
+			"value": "c4e84e40a6e083febfdf266c2103b6497751e50785bcf205b5eb8e3752f673ae"
+		}
+	]
+}
